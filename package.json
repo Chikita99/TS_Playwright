@@ -1,0 +1,31 @@
+{
+  "name": "tc_playwrite",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "@playwright/test": "^1.48.1",
+    "@types/node": "^22.7.7",
+    "eslint": "^9.13.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.11.0",
+    "husky": "^9.1.6",
+    "prettier": "^3.3.3",
+    "typescript-eslint": "^8.10.0"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "fsevents": "^2.3.2",
+    "playwright": "^1.48.1",
+    "playwright-core": "^1.48.1",
+    "undici-types": "^6.19.8"
+  },
+  "description": ""
+}

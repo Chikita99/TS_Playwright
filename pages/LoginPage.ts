@@ -4,11 +4,11 @@ export class LoginPage {
     
     constructor (public page: Page) {};
 
-    readonly newUserTitle = ".signup-form h2"
-    readonly nameSignUpForm = "input[data-qa='signup-name']"
-    readonly emailSignUpForm = "input[data-qa='signup-email']"
-    readonly signUpBtn = "button[data-qa='signup-button']"
-    readonly genderRadioBtn = "div.radio-inline:nth-of-type(1)"
+    readonly newUserTitle = ".signup-form h2";
+    readonly nameSignUpForm = "input[data-qa='signup-name']";
+    readonly emailSignUpForm = "input[data-qa='signup-email']";
+    readonly signUpBtn = "button[data-qa='signup-button']";
+    readonly genderRadioBtn = "div.radio-inline:nth-of-type(1)";
     readonly nameForm = "#name";
     readonly emailForm = "#email";
     readonly passwordForm = "#password";
@@ -23,8 +23,11 @@ export class LoginPage {
     readonly cityForm = "#city";
     readonly zipForm = "#zipcode";
     readonly phoneNumberForm = "#mobile_number";
-    readonly createAccountBtn = "button[data-qa='create-account']"
-
+    readonly createAccountBtn = "button[data-qa='create-account']";
+    readonly emailSignInForm = "input[data-qa='login-email']";
+    readonly passwordSignInForm = "input[data-qa='login-password']";
+    readonly loginBtn = "button[data-qa='login-button']";
+    
 
     async isValidDate(day: number, month: number, year: number): Promise<boolean> {
         const date = new Date(year, month - 1, day);

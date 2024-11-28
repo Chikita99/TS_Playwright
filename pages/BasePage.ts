@@ -31,8 +31,6 @@ export class BasePage {
     //payment_done
     readonly mainText = ".col-sm-9.col-sm-offset-1 p";
 
-    
-
     async cookieScreenCTA() {
         await this.page.locator(this.cookieCTA).click();
     }

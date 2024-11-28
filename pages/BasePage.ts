@@ -32,16 +32,14 @@ export class BasePage {
     readonly mainText = ".col-sm-9.col-sm-offset-1 p";
 
     async cookieScreenCTA() {
-        try {
-            const cookieButton = this.page.locator(this.cookieCTA);
+        const cookieButton = this.page.locator(this.cookieCTA);
+        const isVisible = await cookieButton.isVisible();
+    
+        if (isVisible) {
             await cookieButton.click();
-
-        } catch (error: unknown) {
-            if (error instanceof Error) {
-                console.log(`Error: ${error.message}`);
-            } else {
-                console.log("An unknown error occurred.");
-            }
+            console.log("Cookie button clicked.");
+        } else {
+            console.log("Cookie button is not visible, skipping.");
         }
     }
 

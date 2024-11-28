@@ -47,6 +47,7 @@ jobs:
 
       
       - name: Upload Allure results
+        if: failure() || success()
         run: |
           allure generate allure-results --clean
           allure serve allure-results --port 8000 &
@@ -55,6 +56,7 @@ jobs:
 
       
       - name: Upload Allure report
+        if: failure() || success() 
         uses: actions/upload-artifact@v3
         with:
           name: allure-report

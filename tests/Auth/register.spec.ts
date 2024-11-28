@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 
 test.beforeEach(async ({ page, basePage }) => {
-    const baseUrl = process.env.BASE_URL || "https://automationexercise.com/"; // Укажи правильный URL
+    const baseUrl = process.env.BASE_URL || "https://automationexercise1.com/";
     await page.goto(baseUrl);
     await basePage.cookieScreenCTA();
 })

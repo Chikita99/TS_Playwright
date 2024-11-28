@@ -31,10 +31,16 @@ jobs:
         run: npx tsc --noEmit
 
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npx playwright test --reporter=allure-playwright
 
-      - name: Upload Playwright trace
+      - name: Upload Allure results
         uses: actions/upload-artifact@v3
         with:
-          name: playwright-trace
-          path: test-results/**/*.zip
+          name: allure-results
+          path: allure-results
+
+      - name: Upload Allure Report
+        run: |
+          npm install -g allure-commandline
+          allure generate allure-results --clean
+          allure open

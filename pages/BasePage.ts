@@ -32,6 +32,7 @@ export class BasePage {
     readonly mainText = ".col-sm-9.col-sm-offset-1 p";
 
     async cookieScreenCTA() {
+        await this.page.locator(this.cookieCTA).waitFor({ state: "visible", timeout: 15000 });
         await this.page.locator(this.cookieCTA).click();
     }
 

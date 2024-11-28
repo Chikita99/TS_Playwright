@@ -39,5 +39,4 @@ test('Register and delete new user', async ({ basePage, loginPage, page }) => {
     await page.locator(basePage.deleteAccountBtn).click();
     await expect(page.locator(basePage.accountCreatedTitle)).toHaveText("Account Deleted!");
     await page.locator(basePage.continueBtn).click();
-
 })

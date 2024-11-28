@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 
 test.beforeEach(async ({ page, basePage }) => {
-    await page.goto("/")
+    await page.goto('/');
     await basePage.cookieScreenCTA();
 })
 

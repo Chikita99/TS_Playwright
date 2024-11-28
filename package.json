@@ -12,6 +12,8 @@
     "@eslint/js": "^9.13.0",
     "@playwright/test": "^1.48.1",
     "@types/node": "^22.7.7",
+    "allure-commandline": "^2.32.0",
+    "allure-playwright": "^3.0.6",
     "eslint": "^9.13.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
@@ -25,10 +27,12 @@
     "test": "tests"
   },
   "dependencies": {
-    "fsevents": "^2.3.2",
     "playwright": "^1.48.1",
     "playwright-core": "^1.48.1",
     "undici-types": "^6.19.8"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.3.2"
   },
   "description": "",
   "husky": {

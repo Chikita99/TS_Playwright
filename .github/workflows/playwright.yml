@@ -10,40 +10,53 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
+      
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
+      
       - name: Install dependencies
         run: npm ci
 
+      
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      # Compile TypeScript
+      
       - name: Compile TypeScript
         run: npx tsc --noEmit
 
+      
       - name: Run Playwright tests
-        run: npx playwright test --reporter=allure-playwright
+        run: npx playwright test
 
-      - name: Generate Allure report
-        if: failure() || success()
+      
+      - name: Install Allure
+        run: |
+          wget https://github.com/allure-framework/allure2/releases/download/2.19.0/allure-2.19.0.tgz
+          tar -zxvf allure-2.19.0.tgz
+          sudo mv allure-2.19.0 /opt/allure
+          sudo ln -s /opt/allure/bin/allure /usr/local/bin/allure
+
+      
+      - name: Upload Allure results
         run: |
           allure generate allure-results --clean
           allure serve allure-results --port 8000 &
-          sleep 10  
+          sleep 10
           curl -L -o allure-report.zip http://localhost:8000/allure-dashboard.zip
+
       
-      - name: Upload Allure results
-        if: failure() || success()
+      - name: Upload Allure report
         uses: actions/upload-artifact@v3
         with:
           name: allure-report
           path: allure-report.zip
+

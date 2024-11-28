@@ -34,8 +34,6 @@ export class BasePage {
     async cookieScreenCTA() {
         try {
             const cookieButton = this.page.locator(this.cookieCTA);
-            await cookieButton.waitFor({ state: "visible", timeout: 15000 });
-            
             await cookieButton.click();
 
         } catch (error: unknown) {

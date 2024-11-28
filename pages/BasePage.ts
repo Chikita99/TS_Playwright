@@ -32,8 +32,19 @@ export class BasePage {
     readonly mainText = ".col-sm-9.col-sm-offset-1 p";
 
     async cookieScreenCTA() {
-        await this.page.locator(this.cookieCTA).waitFor({ state: "visible", timeout: 15000 });
-        await this.page.locator(this.cookieCTA).click();
+        try {
+            const cookieButton = this.page.locator(this.cookieCTA);
+            await cookieButton.waitFor({ state: "visible", timeout: 15000 });
+            
+            await cookieButton.click();
+
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                console.log(`Error: ${error.message}`);
+            } else {
+                console.log("An unknown error occurred.");
+            }
+        }
     }
 
     getTitleByText(titleText: string): Locator {

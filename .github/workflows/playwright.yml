@@ -44,21 +44,19 @@ jobs:
           tar -zxvf allure-2.19.0.tgz
           sudo mv allure-2.19.0 /opt/allure
           sudo ln -s /opt/allure/bin/allure /usr/local/bin/allure
-
       
-      - name: Upload Allure results
-        if: failure() || success()
-        run: |
-          allure generate allure-results --clean
-          allure serve allure-results --port 8000 &
-          sleep 10
-          curl -L -o allure-report.zip http://localhost:8000/allure-dashboard.zip
-
-      
-      - name: Upload Allure report
-        if: failure() || success() 
-        uses: actions/upload-artifact@v3
-        with:
-          name: allure-report
-          path: allure-report.zip
+          - name: Upload Allure results
+          if: failure() || success()
+          run: |
+            allure generate allure-results --clean
+            allure serve allure-results --port 8000 &
+            sleep 10
+        
+          - name: Upload Allure report
+          if: failure() || success()
+          uses: actions/upload-artifact@v3
+          with:
+            name: allure-report
+            path: allure-results
+        
 

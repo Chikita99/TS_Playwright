@@ -6,10 +6,18 @@ export class BasePage {
 
     private readonly cookieCTA = ".fc-cta-consent";
     readonly menuLoginBtn = ".fa.fa-lock";
+    readonly contactUsBtn = ".fa.fa-envelope";
+    readonly productsBtn = ".material-icons.card_travel";
     readonly logInUsernameText = "//ul[@class='nav navbar-nav']//li//a[contains(text(), 'Logged in as')]";
     readonly deleteAccountBtn = ".fa.fa-trash-o";
     private readonly addToCartBtn = "a[data-product-id='1']";
     private readonly viewCartBtn = "a[href='/view_cart']";
+    readonly carouselH1Title = ".item.active .col-sm-6 h1";
+    readonly carouselH2Title = ".item.active .col-sm-6 h2";
+    readonly carouselMainText = ".item.active .col-sm-6 p";
+    readonly carouselTestcaseBtn = ".item.active .col-sm-6 .test_cases_list .btn.btn-success";
+    readonly carouselApiListBtn = ".item.active .col-sm-6 .apis_list .btn.btn-success";
+    readonly carouselRightArrowBtn = ".right.control-carousel.hidden-xs";
 
     //cart_page
     readonly proceedCheckoutBtn = ".btn.btn-default.check_out";
@@ -28,7 +36,7 @@ export class BasePage {
     readonly cardYearForm = "input[data-qa='expiry-year']";
     readonly payAndConfBtn = "button[data-qa='pay-button']";
 
-    //payment_done
+    //payment_done_page
     readonly mainText = ".col-sm-9.col-sm-offset-1 p";
 
     async cookieScreenCTA() {
@@ -45,5 +53,6 @@ export class BasePage {
 
     getTitleByText(titleText: string): Locator {
         return this.page.locator(`h2.title.text-center:has-text("${titleText}")`);
-    }
+    };
+    
 }

@@ -40,3 +40,12 @@ test('Register and delete new user', async ({ basePage, loginPage, page }) => {
     await expect(page.locator(basePage.accountCreatedTitle)).toHaveText("Account Deleted!");
     await page.locator(basePage.continueBtn).click();
 })
+
+test('Logic User with incorrect password and email', async ({basePage, loginPage, page}) => {
+    await expect(page).toHaveURL('https://automationexercise.com/');
+    await page.locator(basePage.menuLoginBtn).click();
+    await page.locator(loginPage.emailSignInForm).fill("test@gmail.com");
+    await page.locator(loginPage.passwordSignInForm).fill("Password1@");
+    await page.locator(loginPage.loginBtn).click();
+    await expect(page.locator(loginPage.errorLoginMessage)).toHaveText("Your email or password is incorrect!");
+})

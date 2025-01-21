@@ -27,6 +27,7 @@ export class LoginPage {
     readonly emailSignInForm = "input[data-qa='login-email']";
     readonly passwordSignInForm = "input[data-qa='login-password']";
     readonly loginBtn = "button[data-qa='login-button']";
+    readonly errorLoginMessage = ".login-form p";
     
 
     async isValidDate(day: number, month: number, year: number): Promise<boolean> {

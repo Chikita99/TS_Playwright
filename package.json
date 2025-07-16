@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "npx playwright test",
+    "test:testname": "npx playwright test --project=chromium tests/*/{testname}.spec.ts"
   },
   "keywords": [],
   "author": "",

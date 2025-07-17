@@ -17,50 +17,43 @@ jobs:
 
     steps:
       
-      # Шаг 1: Checkout of repo
+      # Step 1: Checkout of repo
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Шаг 2: Setup Node.js
+      # Step 2: Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      # Шаг 3: Install dependencies
+      # Step 3: Install dependencies
       - name: Install dependencies
         run: npm ci
 
-      # Шаг 4: browsers for Playwright
+      # Step 4: browsers for Playwright
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      # Шаг 5:  TypeScript
+      # Step 5:  TypeScript
       - name: Compile TypeScript
         run: npx tsc --noEmit
 
-      # Шаг 6: Laucnh Playwright
+      # Step 6: Launch Playwright
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npx playwright test --reporter=html
 
-      # Шаг 7: Launch Allure with Docker
-      - name: Run Allure Docker container
-        run: |
-          docker run --rm -v $(pwd)/allure-results:/allure-results -v $(pwd)/allure-report:/allure-report allure-framework/allure-commandline:2.19.0 generate /allure-results --clean
-
-      # Шаг 8: Generating Allure report
-      - name: Serve Allure report
-        run: |
-          allure serve allure-results --port 8000 &
-          sleep 10  # Ждем, чтобы сервер успел запуститься
-
-      # Шаг 9: Downloading testing report 
-      - name: Upload Allure report
-        if: failure() || success()
+      
+      # Step 7: Upload test report
+      - name: Upload Playwright HTML report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: allure-report
-          path: allure-results
+          name: playwright-html-report
+          path: playwright-report
+      
+
+      
 
         
 

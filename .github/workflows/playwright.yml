@@ -33,7 +33,7 @@ jobs:
 
       # Step 4: browsers for Playwright
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+        run: npx playwright install
 
       # Step 5:  TypeScript
       - name: Compile TypeScript
